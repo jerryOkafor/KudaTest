@@ -1,34 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+	        android:id="@+id/toolbar"
+	        android:layout_width="match_parent"
+	        android:layout_height="?attr/actionBarSize"
+	        android:background="?attr/colorPrimary"
+	        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+	    tools:context=".MainActivity"
+	    tools:showIn="@layout/activity_main">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+	        android:id="@+id/lineCharView"
+	        android:layout_width="match_parent"
+	        android:layout_height="160dp"
+	        app:layout_constraintEnd_toEndOf="parent"
+	        app:layout_constraintHorizontal_bias="1.0"
+	        app:layout_constraintStart_toStartOf="parent"
+	        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+	        android:id="@+id/transactionRecyclerView"
+	        android:layout_width="0dp"
+	        android:layout_height="0dp"
+	        android:layout_marginBottom="8dp"
+	        app:layout_constraintBottom_toBottomOf="parent"
+	        app:layout_constraintEnd_toEndOf="parent"
+	        app:layout_constraintStart_toStartOf="parent"
+	        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        <com.google.android.material.tabs.TabLayout
+	        android:id="@+id/tabLayout"
+	        style="@style/TabStyle"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/tab_bg"
+	        android:paddingStart="8dp"
+	        android:paddingEnd="8dp"
+	        app:layout_constraintEnd_toEndOf="parent"
+	        app:layout_constraintStart_toStartOf="parent"
+	        app:layout_constraintTop_toBottomOf="@+id/lineCharView"
+	        app:tabIndicatorColor="@null"
+	        app:tabMode="scrollable"
+	        app:tabRippleColor="@null">
+
+            <com.google.android.material.tabs.TabItem
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Monday" />
+
+            <com.google.android.material.tabs.TabItem
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Tuesday" />
+
+            <com.google.android.material.tabs.TabItem
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Wednesday" />
+        </com.google.android.material.tabs.TabLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
